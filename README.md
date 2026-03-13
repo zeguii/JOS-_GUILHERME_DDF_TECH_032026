@@ -137,13 +137,25 @@ Atendendo ao **requisito bônus** do case, o Spark foi utilizado para extrair os
 Foi desenvolvido um aplicativo interativo utilizando Python e Streamlit para permitir que os usuários finais explorem os dados de forma dinâmica, com filtros iterativos e análises detalhadas como proporção de status e dias da semana com maior volume de compras.
 
 **Evidência do Aplicativo:**
-![App Streamlit](tela.jpeg)
+![App Streamlit](telafinal.jpeg)
 
 ### Como rodar o aplicativo localmente:
 1. Clone este repositório.
 2. Certifique-se de ter o Python instalado.
 3. Instale as dependências: `pip install streamlit pandas plotly`
 4. Execute o comando no terminal: `streamlit run app.py`
+
+## 🌟 Item Bônus: GenAI e Data Apps (Gerador de Apresentações)
+
+Para atingir o nível de excelência máxima no projeto, o Data App foi expandido para incluir uma solução de **Inteligência Artificial Generativa** focada em alavancar as vendas. 
+
+Utilizando o próprio Streamlit, foi criada uma interface que simula a geração de imagens de produtos e textos persuasivos (copywriting) para o e-commerce.
+
+* **Tecnologia Utilizada:** DALL-E 3 (via Bing Image Creator)
+* **Prompt Documentado:** *"Uma fotografia de estúdio de alta qualidade de uns auscultadores (headphones) Bluetooth modernos e minimalistas, cor preto mate com detalhes em ouro rosa. Iluminação dramática, fundo escuro. Estilo de publicidade comercial premium para e-commerce, 8k, hiper-realista."*
+
+**Evidência do Gerador no Data App:**
+![Item Bônus GenAI](telafone.jpeg)
 
 ---
 *Projeto construído com foco em resolução de problemas, governança de dados e entrega de valor para o negócio.*
