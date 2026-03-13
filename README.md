@@ -63,7 +63,6 @@ erDiagram
 
 
 
-
 ## 📁 Fase 1: Ingestão e Catálogo de Dados
 
 Os dados brutos em `.csv` foram importados para a plataforma Dadosfera, onde as tabelas físicas foram geradas no Snowflake.
