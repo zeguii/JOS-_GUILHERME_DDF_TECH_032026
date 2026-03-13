@@ -120,6 +120,17 @@ A partir das tabelas físicas, foram construídas consultas SQL complexas (com a
 
 ---
 
+## ⚙️ Item 8: Pipeline de Dados (ETL) com Apache Spark
+
+Como requisito de processamento e preparação dos dados (ETL) para as camadas de consumo, foi desenvolvido um pipeline utilizando **PySpark** (Apache Spark). 
+
+Atendendo ao **requisito bônus** do case, o Spark foi utilizado para extrair os dados brutos, realizar a tipagem correta das colunas de data (timestamp), derivar novas *features* temporais (ano e mês) para facilitar as agregações no painel de BI, e aplicar filtros de limpeza (mantendo apenas pedidos com status `delivered`).
+
+**Evidência do Pipeline PySpark:**
+![Pipeline com Spark](pipeline.jpeg)
+
+---
+
 ## 💻 Item 9: Aplicativo de Dados Interativo (Data App)
 
 Foi desenvolvido um aplicativo interativo utilizando Python e Streamlit para permitir que os usuários finais explorem os dados de forma dinâmica, com filtros iterativos e análises detalhadas como proporção de status e dias da semana com maior volume de compras.
