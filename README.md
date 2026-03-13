@@ -4,29 +4,67 @@
 **Mês/Ano:** 03/2026
 
 ## 📌 Sobre o Projeto
-Este projeto foi desenvolvido como parte de um case técnico para demonstrar habilidades ponta a ponta em Engenharia de Dados, Análise de Dados (BI) e desenvolvimento de Aplicativos de Dados. Utilizamos a base de dados pública do e-commerce brasileiro **Olist**.
-
-## 📋 Planeamento e Agilidade (Item 0)
-Para garantir a entrega contínua de valor e o alinhamento com os objetivos de negócio, o projeto foi estruturado utilizando metodologias ágeis (Kanban). Abaixo está o fluxo de trabalho seguido:
-
-| 📝 Backlog / To Do | ⚙️ In Progress | ✅ Done (Concluído) |
-| :--- | :--- | :--- |
-| [Item 5] Integrar API de LLM para análise de sentimentos | [Item 4] Criar testes de Data Quality | [Item 1] Seleção da Base de Dados (Olist) |
-| [Item bônus] Gerador de imagens de produtos com IA | [Item 6] Desenhar Diagrama de Modelagem (Star Schema) | [Item 2] Ingestão de Dados na Dadosfera / Snowflake |
-| [Item 10] Gravação do Pitch (Especialista Dadosfera) | | [Item 3] Catalogação e Dicionário de Dados |
-| | | [Item 7] Desenvolvimento de Queries SQL |
-| | | [Item 7] Construção do Dashboard Executivo (Metabase) |
-| | | [Item 9] Deploy do Data App (Streamlit) |
+Este projeto foi desenvolvido como parte de um case técnico para demonstrar habilidades ponta a ponta em Engenharia de Dados, Análise de Dados (BI) e desenvolvimento de Aplicativos de Dados. 
 
 ## 🛠️ Tecnologias Utilizadas
 * **Dadosfera:** Ingestão de dados e catalogação.
 * **Snowflake:** Armazenamento em nuvem e consultas SQL.
-* **Metabase:** Criação de consultas nativas e visualização de dados (Dashboard).
-* **Python:** Processamento de dados (Pandas) e visualização (Plotly).
+* **Metabase:** Criação de consultas nativas e visualização de dados.
+* **Python (Pandas, Great Expectations, Transformers):** Processamento, qualidade de dados e IA.
 * **Streamlit:** Desenvolvimento e deploy do aplicativo web interativo.
 
 ---
 
+## 📋 Item 0: Planejamento e Agilidade
+Para garantir a entrega contínua de valor e o alinhamento com os objetivos de negócio, o projeto foi estruturado utilizando metodologias ágeis (Kanban). Abaixo está o fluxo de trabalho seguido:
+
+| 📝 Backlog / To Do | ⚙️ In Progress | ✅ Done (Concluído) |
+| :--- | :--- | :--- |
+| [Item Bônus] Gerador de imagens de produtos com IA | [Item 10] Gravação do Pitch de Apresentação | [Item 1] Seleção da Base de Dados (Olist) |
+| | | [Item 2 e 3] Ingestão e Catalogação na Dadosfera |
+| | | [Item 4] Testes de Data Quality |
+| | | [Item 5] Feature Engineering com LLM |
+| | | [Item 6] Diagrama de Modelagem (Star Schema) |
+| | | [Item 7] Dashboard Executivo (Metabase) |
+| | | [Item 9] Deploy do Data App (Streamlit) |
+
+---
+
+## 🎯 Item 1: Seleção da Base de Dados
+Utilizamos a base de dados pública do e-commerce brasileiro **Olist**, que possui mais de 100.000 pedidos anonimizados, abrangendo informações de clientes, pagamentos, geolocalização, produtos e avaliações.
+
+---
+
+## ☁️ Item 2 e 3: Ingestão e Catálogo de Dados
+Os dados brutos em `.csv` foram importados para a plataforma Dadosfera, onde as tabelas físicas foram geradas no Snowflake e devidamente catalogadas para governança.
+
+* **Link para o Catálogo na Dadosfera:** [Acessar Catálogo](https://app.dadosfera.ai/pt-BR/catalog/data-assets?tags=&asset_types=&owner=guilherme.lima85&page=1&sort=az)
+
+**Evidência do Catálogo:**
+![Catálogo de Dados](catálogo.jpeg)
+
+---
+
+## 🛡️ Item 4: Data Quality (Qualidade de Dados)
+Para garantir a confiabilidade das análises, foi implementada uma etapa de validação de dados utilizando a biblioteca **Great Expectations**. Foram criadas regras (expectations) para verificar a integridade da chave primária (`order_id` sem nulos), a consistência dos domínios (`order_status` válidos) e a padronização das chaves estrangeiras (`customer_id` com 32 caracteres).
+
+**Evidência dos Testes de Qualidade:**
+![Relatório Great Expectations](item4.jpeg)
+
+---
+
+## 🤖 Item 5: Inteligência Artificial e LLMs
+Para extrair valor de dados desestruturados, foi aplicada uma técnica de *Feature Engineering* baseada em Modelos de Linguagem Natural (LLMs). Utilizamos a biblioteca `transformers` da Hugging Face para analisar os comentários de texto deixados pelos clientes (tabela de Reviews) e gerar novas variáveis estruturadas de Sentimento (classificação em estrelas e score de confiança). Estas novas *features* podem ser integradas no Data Warehouse para análises avançadas.
+
+**Evidência da Transformação com IA:**
+![Extração de Features com GenAI](item5.jpeg)
+
+---
+
+## 📐 Item 6: Modelagem de Dados
+Para a construção do Data Warehouse no Snowflake (via Dadosfera), foi adotada a **Modelagem Dimensional de Ralph Kimball (Star Schema)**. 
+
+**Justificativa:** A escolha deste modelo deve-se à sua alta performance para consultas analíticas (OLAP) e à facilidade de compreensão por parte dos usuários de negócio. Centralizar as métricas transacionais em uma tabela de Fatos e rodear com tabelas de Dimensões permite agregações rápidas e filtros intuitivos na ferramenta de BI.
 
 **Diagrama da Arquitetura (Star Schema):**
 
@@ -62,22 +100,9 @@ erDiagram
     FATO_PEDIDOS }|--|| DIM_TEMPO : "ocorre em"
 ```
 
+## 📊 Item 7: Análise Exploratória e Dashboard Executivo
 
-
-## 📁 Fase 1: Ingestão e Catálogo de Dados
-
-Os dados brutos em `.csv` foram importados para a plataforma Dadosfera, onde as tabelas físicas foram geradas no Snowflake.
-
-* **Link para o Catálogo na Dadosfera:** [https://app.dadosfera.ai/pt-BR/catalog/data-assets?tags=&asset_types=&owner=guilherme.lima85&page=1&sort=az]
-
-**Evidência do Catálogo:**
-![Catálogo de Dados](catálogo.jpeg)
-
----
-
-## 📊 Fase 2: Análise Exploratória e Dashboard Executivo
-
-A partir das tabelas físicas, foram construídas consultas SQL complexas para responder a perguntas de negócio e montar um painel gerencial completo.
+A partir das tabelas físicas, foram construídas consultas SQL complexas (com agregações e JOINs) para responder a perguntas de negócio e montar um painel gerencial completo.
 
 **Métricas desenvolvidas (Overdelivery):**
 1. Faturamento Total (R$)
@@ -95,9 +120,9 @@ A partir das tabelas físicas, foram construídas consultas SQL complexas para r
 
 ---
 
-## 💻 Fase 3: Aplicativo de Dados Interativo (Data App)
+## 💻 Item 9: Aplicativo de Dados Interativo (Data App)
 
-Foi desenvolvido um aplicativo interativo utilizando **Python e Streamlit** para permitir que os usuários finais explorem os dados de forma dinâmica, com filtros iterativos e análises detalhadas como proporção de status e dias da semana com maior volume de compras.
+Foi desenvolvido um aplicativo interativo utilizando Python e Streamlit para permitir que os usuários finais explorem os dados de forma dinâmica, com filtros iterativos e análises detalhadas como proporção de status e dias da semana com maior volume de compras.
 
 **Evidência do Aplicativo:**
 ![App Streamlit](tela.jpeg)
