@@ -51,7 +51,7 @@ A partir das tabelas físicas, foram construídas consultas SQL complexas para r
 Foi desenvolvido um aplicativo interativo utilizando **Python e Streamlit** para permitir que os usuários finais explorem os dados de forma dinâmica, com filtros iterativos e análises detalhadas como proporção de status e dias da semana com maior volume de compras.
 
 **Evidência do Aplicativo:**
-![App Streamlit](telaapp.jpeg)
+![App Streamlit](tela.jpeg)
 
 ### Como rodar o aplicativo localmente:
 1. Clone este repositório.
