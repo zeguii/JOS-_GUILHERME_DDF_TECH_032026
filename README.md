@@ -26,6 +26,7 @@ Para garantir a entrega contínua de valor e o alinhamento com os objetivos de n
 | | | [Item 5] Feature Engineering com LLM |
 | | | [Item 6] Diagrama de Modelagem (Star Schema) |
 | | | [Item 7] Dashboard Executivo (Metabase) |
+| | | [Item 8] Pipeline de Dados (ETL) com Spark |
 | | | [Item 9] Deploy do Data App (Streamlit) |
 
 ---
