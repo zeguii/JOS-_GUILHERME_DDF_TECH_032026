@@ -60,6 +60,7 @@ erDiagram
     FATO_PEDIDOS }|--|| DIM_CLIENTES : "realizado por"
     FATO_PEDIDOS }|--|| DIM_PRODUTOS : "contém"
     FATO_PEDIDOS }|--|| DIM_TEMPO : "ocorre em"
+```
 
 
 
