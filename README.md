@@ -27,6 +27,45 @@ Para garantir a entrega contínua de valor e o alinhamento com os objetivos de n
 
 ---
 
+## 📐 Item 6: Modelagem de Dados
+
+Para a construção do Data Warehouse no Snowflake (via Dadosfera), foi adotada a **Modelagem Dimensional de Ralph Kimball (Star Schema)**. 
+
+**Justificativa:** A escolha deste modelo deve-se à sua alta performance para consultas analíticas (OLAP) e à facilidade de compreensão por parte dos utilizadores de negócio. Num cenário de e-commerce, centralizar as métricas transacionais numa tabela de Fatos e rodear com tabelas de Dimensões (Clientes, Produtos, Tempo) permite agregações rápidas e filtros intuitivos na ferramenta de BI (Metabase).
+
+**Diagrama da Arquitetura (Star Schema):**
+
+```mermaid
+erDiagram
+    FATO_PEDIDOS {
+        string order_id PK
+        string customer_id FK
+        string product_id FK
+        date purchase_timestamp
+        float payment_value
+        string order_status
+    }
+    DIM_CLIENTES {
+        string customer_id PK
+        string customer_city
+        string customer_state
+    }
+    DIM_PRODUTOS {
+        string product_id PK
+        string product_category_name
+        float product_weight_g
+    }
+    DIM_TEMPO {
+        date data_completa PK
+        int ano
+        int mes
+        string dia_semana
+    }
+
+    FATO_PEDIDOS }|--|| DIM_CLIENTES : "realizado por"
+    FATO_PEDIDOS }|--|| DIM_PRODUTOS : "contém"
+    FATO_PEDIDOS }|--|| DIM_TEMPO : "ocorre em"
+
 ## 📁 Fase 1: Ingestão e Catálogo de Dados
 
 Os dados brutos em `.csv` foram importados para a plataforma Dadosfera, onde as tabelas físicas foram geradas no Snowflake.
