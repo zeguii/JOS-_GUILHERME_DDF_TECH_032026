@@ -6,6 +6,18 @@
 ## 📌 Sobre o Projeto
 Este projeto foi desenvolvido como parte de um case técnico para demonstrar habilidades ponta a ponta em Engenharia de Dados, Análise de Dados (BI) e desenvolvimento de Aplicativos de Dados. Utilizamos a base de dados pública do e-commerce brasileiro **Olist**.
 
+## 📋 Planeamento e Agilidade (Item 0)
+Para garantir a entrega contínua de valor e o alinhamento com os objetivos de negócio, o projeto foi estruturado utilizando metodologias ágeis (Kanban). Abaixo está o fluxo de trabalho seguido:
+
+| 📝 Backlog / To Do | ⚙️ In Progress | ✅ Done (Concluído) |
+| :--- | :--- | :--- |
+| [Item 5] Integrar API de LLM para análise de sentimentos | [Item 4] Criar testes de Data Quality | [Item 1] Seleção da Base de Dados (Olist) |
+| [Item bônus] Gerador de imagens de produtos com IA | [Item 6] Desenhar Diagrama de Modelagem (Star Schema) | [Item 2] Ingestão de Dados na Dadosfera / Snowflake |
+| [Item 10] Gravação do Pitch (Especialista Dadosfera) | | [Item 3] Catalogação e Dicionário de Dados |
+| | | [Item 7] Desenvolvimento de Queries SQL |
+| | | [Item 7] Construção do Dashboard Executivo (Metabase) |
+| | | [Item 9] Deploy do Data App (Streamlit) |
+
 ## 🛠️ Tecnologias Utilizadas
 * **Dadosfera:** Ingestão de dados e catalogação.
 * **Snowflake:** Armazenamento em nuvem e consultas SQL.
