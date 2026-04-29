@@ -1,6 +1,6 @@
 # 🛒 Projeto Olist - Análise de E-commerce e Data App
 
-**Autor:** José Guilherme Lima de Carvalho
+**Autor:** José Guilherme Lima de Carvalho.
 **Mês/Ano:** 03/2026
 
 ## 📌 Sobre o Projeto
